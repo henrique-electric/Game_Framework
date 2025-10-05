@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-project",
+            "type": "shell",
+            "command": "cd build && make",    // <-- Put your pre-debug command here
+            "problemMatcher": []
+        }
+    ]
+}
