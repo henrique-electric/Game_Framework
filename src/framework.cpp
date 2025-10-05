@@ -1,6 +1,8 @@
 #include <framework.hpp>
 
 void Engine::windowEventHandler(void) {
+    char keyPressed;
+    char keyReleased;
     while (SDL_PollEvent(&windowState.mainWinEvent)) {
         switch (windowState.mainWinEvent.type)
         {
@@ -10,13 +12,13 @@ void Engine::windowEventHandler(void) {
             break;
 
         case SDL_EVENT_KEY_DOWN:
-            char keyPressed = windowState.mainWinEvent.key.key;
+            keyPressed = windowState.mainWinEvent.key.key;
             this->callbacks.press_callback(keyPressed);
             break;
         
 
         case SDL_EVENT_KEY_UP:
-            char keyReleased = windowState.mainWinEvent.key.key;
+            keyReleased = windowState.mainWinEvent.key.key;
             this->callbacks.release_callback(keyReleased);
             break;
         }
@@ -40,7 +42,7 @@ Engine::Engine(const char *name, int w, int h)
 }
 
 void Engine::setLoop(std::function<void(void)> newMainLoop) {
-    this->mainLoop = mainLoop;
+    this->mainLoop = newMainLoop;
 }
 
 void Engine::setupHandlers(const KeyboardKeyCallbacks &callbacksPtrs) {
@@ -48,4 +50,13 @@ void Engine::setupHandlers(const KeyboardKeyCallbacks &callbacksPtrs) {
         .press_callback   = callbacksPtrs.press_callback,
         .release_callback = callbacks.release_callback,
     };
+}
+
+void Engine::run(void) {
+    // main loop
+    while (1) {
+        this->windowEventHandler();
+        this->mainLoop();
+    }
+    
 }

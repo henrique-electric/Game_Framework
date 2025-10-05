@@ -14,8 +14,6 @@
 
 #define RENDERER_NAME "Main window Renderer"
 
-
-
 struct SDL_State {
     SDL_Window *winHandler;
     SDL_Renderer *rendHandler;
@@ -35,11 +33,12 @@ class Engine {
         std::function<void(void)> mainLoop;
 
         void cleanup(void);
+        void windowEventHandler(void);
         
         public:
-        void windowEventHandler(void);
         void setLoop(std::function<void(void)> newMainLoop);
         void setupHandlers(const KeyboardKeyCallbacks &callbacksPtrs);
+        void run(void);
         Engine(const char *name, int w, int h);
 };
 
