@@ -2,3 +2,4 @@ out
 vcpkg_installed
 .vs
 build
+src/main.cpp
