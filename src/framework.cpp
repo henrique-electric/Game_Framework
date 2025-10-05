@@ -48,15 +48,15 @@ void Engine::setLoop(std::function<void(void)> newMainLoop) {
 void Engine::setupHandlers(const KeyboardKeyCallbacks &callbacksPtrs) {
     this->callbacks = {
         .press_callback   = callbacksPtrs.press_callback,
-        .release_callback = callbacks.release_callback,
+        .release_callback = callbacksPtrs.release_callback,
     };
 }
 
 void Engine::run(void) {
     // main loop
     while (1) {
-        this->windowEventHandler();
         this->mainLoop();
+        this->windowEventHandler();
     }
     
 }
