@@ -17,4 +17,4 @@ find_package(fmt CONFIG REQUIRED)
 add_library(Framework STATIC src/framework.cpp)
 
 add_executable(Game src/main.cpp )
-target_link_libraries(Game PRIVATE fmt::fmt Engine SDL3::SDL3 Framework)
+target_link_libraries(Game PRIVATE fmt::fmt SDL3::SDL3 Framework)
