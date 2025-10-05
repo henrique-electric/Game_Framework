@@ -14,5 +14,7 @@ include_directories(./include)
 find_package(SDL3 REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 
-add_executable(Game src/main.cpp)
-target_link_libraries(Game PRIVATE fmt::fmt)
+add_library(Framework STATIC src/framework.cpp)
+
+add_executable(Game src/main.cpp )
+target_link_libraries(Game PRIVATE fmt::fmt Engine SDL3::SDL3 Framework)
