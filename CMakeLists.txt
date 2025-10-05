@@ -1,11 +1,14 @@
 ﻿cmake_minimum_required(VERSION 4.1.2)
 project ("Game")
 
+set(CMAKE_CXX_STANDARD 23)
+
 if (WIN32)
 	#include_directories(./vcpkg_installed/x64-windows/include)
 endif()
 
 if (APPLE)
+	
 endif()
 
 include_directories(./include)

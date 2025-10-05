@@ -9,10 +9,15 @@ void Engine::windowEventHandler(void) {
             exit(0);
             break;
 
+        case SDL_EVENT_KEY_DOWN:
+            char keyPressed = windowState.mainWinEvent.key.key;
+            this->callbacks.press_callback(keyPressed);
+            break;
+        
+
         case SDL_EVENT_KEY_UP:
-        
-        
-        default:
+            char keyReleased = windowState.mainWinEvent.key.key;
+            this->callbacks.release_callback(keyReleased);
             break;
         }
     }
@@ -36,4 +41,11 @@ Engine::Engine(const char *name, int w, int h)
 
 void Engine::setLoop(std::function<void(void)> newMainLoop) {
     this->mainLoop = mainLoop;
+}
+
+void Engine::setupHandlers(const KeyboardKeyCallbacks &callbacksPtrs) {
+    this->callbacks = {
+        .press_callback   = callbacksPtrs.press_callback,
+        .release_callback = callbacks.release_callback,
+    };
 }

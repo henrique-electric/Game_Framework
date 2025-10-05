@@ -24,20 +24,22 @@ struct SDL_State {
 
 struct KeyboardKeyCallbacks {
     key_press_handler press_callback;
-
+    key_release_handler release_callback;
 };
 
 class Engine {
     private:
         SDL_State windowState;
+        KeyboardKeyCallbacks callbacks;
+
         std::function<void(void)> mainLoop;
 
         void cleanup(void);
         
-        
         public:
         void windowEventHandler(void);
-        Engine(const char *name, int w, int h);
         void setLoop(std::function<void(void)> newMainLoop);
+        void setupHandlers(const KeyboardKeyCallbacks &callbacksPtrs);
+        Engine(const char *name, int w, int h);
 };
 
