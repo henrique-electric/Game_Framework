@@ -61,9 +61,9 @@ void Engine::setupHandlers(const KeyboardKeyCallbacks &callbacksPtrs) {
 void Engine::run(void) {
     // main loop
     while (1) {
+        this->windowEventHandler();
         this->refreshScreen();
         this->mainLoop();
-        this->windowEventHandler();
     }
     
 }
