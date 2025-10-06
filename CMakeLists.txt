@@ -33,7 +33,7 @@ endif()
 include_directories(./include)
 
 
-add_library(Framework STATIC src/framework.cpp)
+add_library(Framework STATIC src/framework.cpp src/utils.cpp)
 target_link_libraries(Framework PRIVATE SDL3::SDL3)
 target_link_options(Framework PRIVATE -static)
 
