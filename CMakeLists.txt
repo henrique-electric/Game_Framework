@@ -6,23 +6,19 @@ include(FetchContent)
 
 
 FetchContent_Declare(
-  sdl
+  SDL
   GIT_REPOSITORY https://github.com/libsdl-org/SDL
   GIT_TAG        a8589a84226a6202831a3d49ff4edda4acab9acd # release-1.10.0
 )
 
 FetchContent_Declare(
-	sdl_image
+	SDL_image
 	GIT_REPOSITORY https://github.com/libsdl-org/SDL_image
-	GIT_TAG 11154afb7855293159588b245b446a4ef09e574f
+ 	GIT_TAG 	   11154afb7855293159588b245b446a4ef09e574f
 )
 
-FetchContent_MakeAvailable(sdl)
-FetchContent_MakeAvailable(sdl_image)
-
-
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third/SDL)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third/SDL_image)
+FetchContent_MakeAvailable(SDL)
+FetchContent_MakeAvailable(SDL_image)
 
 if (WIN32)
 	#include_directories(./vcpkg_installed/x64-windows/include)
@@ -36,6 +32,7 @@ include_directories(./include)
 
 
 add_library(Framework STATIC src/framework.cpp)
+target_link_libraries(Framework PRIVATE SDL3::SDL3 SDL3_image::SDL3_image)
 
-add_executable(Game src/main.cpp )
-target_link_libraries(Game PRIVATE sdl sdl_image Framework)
+add_executable(Game src/main.cpp)
+target_link_libraries(Game PRIVATE Framework)
