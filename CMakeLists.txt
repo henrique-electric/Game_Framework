@@ -30,7 +30,9 @@ if (APPLE)
 	
 endif()
 
-include_directories(./include)
+include_directories()
+include_directories(./include ./build/_deps/sdl_image-src/include
+					./build/_deps/sdl-src/include)
 
 
 add_library(Framework STATIC src/framework.cpp src/utils.cpp)
