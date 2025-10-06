@@ -38,7 +38,7 @@ void Engine::cleanup(void) {
 
 Engine::Engine(const char *name, int w, int h)
 {
-    this->windowState.winHandler = SDL_CreateWindow(name, w, h, 0);
+    this->windowState.winHandler = SDL_CreateWindow(name, w, h, SDL_WINDOW_RESIZABLE);
     if (windowState.winHandler == nullptr)
         std::runtime_error("Error creating window");
 

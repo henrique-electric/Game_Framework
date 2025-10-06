@@ -21,6 +21,9 @@ FetchContent_MakeAvailable(sdl)
 FetchContent_MakeAvailable(sdl_image)
 
 
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third/SDL)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third/SDL_image)
+
 if (WIN32)
 	#include_directories(./vcpkg_installed/x64-windows/include)
 endif()
