@@ -35,6 +35,10 @@ include_directories(./include)
 
 add_library(Framework STATIC src/framework.cpp)
 target_link_libraries(Framework PRIVATE SDL3::SDL3)
+target_link_options(Framework PRIVATE -static)
+
+
 
 add_executable(Game src/main.cpp)
 target_link_libraries(Game PRIVATE Framework)
+
