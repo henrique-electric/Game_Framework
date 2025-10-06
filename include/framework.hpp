@@ -11,6 +11,7 @@
 #include <functional>
 
 #include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
 
 #include <types.hpp>
 #include <utils.hpp>
