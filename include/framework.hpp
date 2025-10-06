@@ -34,6 +34,7 @@ class Engine {
 
         void cleanup(void);
         void windowEventHandler(void);
+        void refreshScreen(void);
         
         public:
         void setLoop(std::function<void(void)> newMainLoop);

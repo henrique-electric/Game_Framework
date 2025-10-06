@@ -25,6 +25,12 @@ void Engine::windowEventHandler(void) {
     }
 }
 
+void Engine::refreshScreen(void) {
+    SDL_SetRenderDrawColor(windowState.rendHandler,0xFF, 0, 0, 0);
+    SDL_RenderClear(windowState.rendHandler);
+    SDL_RenderPresent(windowState.rendHandler);
+}
+
 void Engine::cleanup(void) {
     SDL_DestroyRenderer(windowState.rendHandler);
     SDL_DestroyWindow(windowState.winHandler);
@@ -55,6 +61,7 @@ void Engine::setupHandlers(const KeyboardKeyCallbacks &callbacksPtrs) {
 void Engine::run(void) {
     // main loop
     while (1) {
+        this->refreshScreen();
         this->mainLoop();
         this->windowEventHandler();
     }
