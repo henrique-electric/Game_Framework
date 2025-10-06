@@ -1,7 +1,9 @@
-﻿cmake_minimum_required(VERSION 4.1.0)
+﻿cmake_minimum_required(VERSION 3.31.0)
 project ("Game")
 
 set(CMAKE_CXX_STANDARD 23)
+set(BUILD_SHARED_LIBS OFF)
+
 include(FetchContent)
 
 
@@ -18,10 +20,10 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(SDL)
-FetchContent_MakeAvailable(SDL_image)
+#FetchContent_MakeAvailable(SDL_image)
 
 if (WIN32)
-	#include_directories(./vcpkg_installed/x64-windows/include)
+	include_directories("C:\\SDKs\\SDL3-3.2.24\\include")
 endif()
 
 if (APPLE)
@@ -32,7 +34,7 @@ include_directories(./include)
 
 
 add_library(Framework STATIC src/framework.cpp)
-target_link_libraries(Framework PRIVATE SDL3::SDL3 SDL3_image::SDL3_image)
+target_link_libraries(Framework PRIVATE SDL3::SDL3)
 
 add_executable(Game src/main.cpp)
 target_link_libraries(Game PRIVATE Framework)
