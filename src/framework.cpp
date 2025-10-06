@@ -21,6 +21,10 @@ void Engine::windowEventHandler(void) {
             keyReleased = windowState.mainWinEvent.key.key;
             this->callbacks.release_callback(keyReleased);
             break;
+
+        case SDL_EVENT_WINDOW_RESIZED:
+            this->refreshScreen();
+            break;
         }
     }
 }
