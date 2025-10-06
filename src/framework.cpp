@@ -30,7 +30,7 @@ void Engine::windowEventHandler(void) {
 }
 
 void Engine::refreshScreen(void) {
-    SDL_SetRenderDrawColor(windowState.rendHandler,0xFF, 0, 0, 0);
+    SDL_SetRenderDrawColor(windowState.rendHandler,0xFF, 0, 0, 0xFF);
     SDL_RenderClear(windowState.rendHandler);
     SDL_RenderPresent(windowState.rendHandler);
 }
@@ -43,12 +43,12 @@ void Engine::cleanup(void) {
 Engine::Engine(const char *name, int w, int h)
 {
     this->windowState.winHandler = SDL_CreateWindow(name, w, h, SDL_WINDOW_RESIZABLE);
-    if (windowState.winHandler == nullptr)
-        std::runtime_error("Error creating window");
+    if (windowState.winHandler == NULL)
+        abort("Error creating the main window");
 
-    this->windowState.rendHandler = SDL_CreateRenderer(windowState.winHandler, RENDERER_NAME);
-    if (windowState.rendHandler == nullptr)
-        std::runtime_error("Error creating main window renderer");
+    this->windowState.rendHandler = SDL_CreateRenderer(windowState.winHandler, NULL);
+    if (windowState.rendHandler == NULL)
+        abort("Error Creating the main window renderer");
 }
 
 void Engine::setLoop(std::function<void(void)> newMainLoop) {
