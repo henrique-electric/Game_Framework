@@ -6,13 +6,14 @@
 //
 
 #pragma once
-#include <SDL3/SDL.h>
-#include <types.hpp>
 #include <iostream>
 #include <exception>
 #include <functional>
 
-#define RENDERER_NAME "Main window Renderer"
+#include <SDL3/SDL.h>
+
+#include <types.hpp>
+#include <utils.hpp>
 
 struct SDL_State {
     SDL_Window *winHandler;
