@@ -20,7 +20,7 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(SDL)
-#FetchContent_MakeAvailable(SDL_image)
+FetchContent_MakeAvailable(SDL_image)
 
 if (WIN32)
 	include_directories("C:\\SDKs\\SDL3-3.2.24\\include")
@@ -30,13 +30,15 @@ if (APPLE)
 	
 endif()
 
-include_directories(./include)
+include_directories()
+include_directories(./include ./build/_deps/sdl_image-src/include
+					./build/_deps/sdl-src/include)
 
 
 include_directories( ./build/_deps/sdl-src/include)
 
 add_library(Framework STATIC src/framework.cpp src/utils.cpp)
-target_link_libraries(Framework PRIVATE SDL3::SDL3)
+target_link_libraries(Framework PRIVATE SDL3::SDL3 SDL3_image::SDL3_image)
 target_link_options(Framework PRIVATE -static)
 
 
